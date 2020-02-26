@@ -1,0 +1,19 @@
+version: "3.4"
+services:
+  drools-workbench:
+    container_name: drools-workbench
+    image: jboss/drools-workbench-showcase:latest
+    volumes:
+    - ./workbench/data:/opt/jboss/wildfly/bin/.niogit:Z
+    environment:
+      - "JBOSS_BIND_ADDRESS=0.0.0.0"
+      - "JAVA_OPTS=-server -Xms1024m -Xmx1024m -Djava.net.preferIPv4Stack=true -Dfile.encoding=UTF-8"
+    ports:
+      - 8080:8080
+      - 8001:8001
+  kie-server:
+    container_name: kie-server
+    image: jboss/kie-server-showcase:latest
+    ports:
+      - 8081:8080     
+#http://localhost:8080/business-central
